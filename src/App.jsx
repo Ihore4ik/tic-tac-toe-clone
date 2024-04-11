@@ -41,7 +41,7 @@ function App() {
           return a;
         }, []);
         const newArr = [...board];
-        newArr[arr[0]] = player;
+        newArr[arr[Math.floor(Math.random()*arr.length)]] = player;
         setBoard(newArr);
         setIsX(!isX);
       }, 1000);
