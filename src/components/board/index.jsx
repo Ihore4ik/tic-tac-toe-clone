@@ -1,9 +1,9 @@
 import React from "react";
 import Ceil from "../ceil";
 
-function Board({ board, setValue }) {
+function Board({ board, setValue, dis }) {
   return (
-    <div className="flex flex-wrap w-[350px] h-[350px]">
+    <div className={dis ? 'board is-disabled' : 'board'}>
       {board.map((item, index) => (
         <Ceil key={index} value={item} setValue={() => setValue(index)} />
       ))}
