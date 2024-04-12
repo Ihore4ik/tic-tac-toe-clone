@@ -1,7 +1,9 @@
 export const getRandomNumber = (num) => {
-  return Math.floor(Math.random() * num);
+  return Math.floor(Math.random() * num) + 1;
 };
 
-export const checkActivePlayer = (value,player) => {
-  return value === player ? "activePlayer" : "";
+export const wait = (ms) => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(), ms);
+  });
 };

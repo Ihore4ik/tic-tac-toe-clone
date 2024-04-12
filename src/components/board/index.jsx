@@ -1,11 +1,13 @@
-import React from "react";
+import { useSelector } from "react-redux";
 import Ceil from "../ceil";
 
-function Board({ board, setValue, dis }) {
+function Board({ board }) {
+  const { winner } = useSelector((state) => state.data);
+
   return (
-    <div className={dis ? 'board is-disabled' : 'board'}>
+    <div className={winner ? "board is-disabled" : "board"}>
       {board.map((item, index) => (
-        <Ceil key={index} value={item} setValue={() => setValue(index)} />
+        <Ceil key={index} value={item} index={index} />
       ))}
     </div>
   );
