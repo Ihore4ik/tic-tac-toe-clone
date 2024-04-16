@@ -9,7 +9,7 @@ function Ceil({ value, index }) {
 
   return (
     <div
-      className="w-[100px] m-2 h-[100px] bg-white flex items-center justify-center cursor-pointer hover:scale-105"
+      className="ceil"
       onClick={handleClick}
     >
       {value === "X" ? (

@@ -11,8 +11,17 @@
 .app {
   @apply flex items-center w-screen h-screen justify-center flex-col bg-gradient-to-r from-[#051937] via-[#008793]  to-[#a8eb12] text-white;
 }
+
+.ceil{
+  @apply shadow-md shadow-black rounded w-[100px] m-2 h-[100px] bg-white flex items-center justify-center cursor-pointer hover:scale-105;
+}
+
 .activePlayer {
-  @apply border-fuchsia-600 border-2 rounded-md px-2 py-1;
+  @apply shadow-md shadow-black border-fuchsia-600 border-2 rounded-md px-2 py-1;
+}
+
+.player {
+  @apply shadow-md shadow-black border-transparent rounded-md border-2 px-2 py-1;
 }
 
 .board {
@@ -22,6 +31,7 @@
 .is-disabled {
   @apply pointer-events-none  opacity-75;
 }
+
 .reset-btn {
-  @apply py-2 px-4 font-medium bg-fuchsia-600 hover:bg-white hover:text-fuchsia-600 transition-all ease-linear delay-200 rounded-lg uppercase;
+  @apply shadow-md shadow-black py-2 px-4 font-medium bg-fuchsia-600 hover:bg-white hover:text-fuchsia-600 transition-all ease-linear delay-200 rounded-lg uppercase;
 }

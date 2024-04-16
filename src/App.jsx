@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { resetBoard, aiSetValueToBoard } from "./store/features/boardSlice";
+import {
+  resetBoard,
+  aiSetValueToBoard,
+  aiProfiSetValueToBoard,
+} from "./store/features/boardSlice";
 import Board from "./components/board";
 
 function App() {
@@ -8,7 +12,8 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     if (!isX) {
-      dispatch(aiSetValueToBoard());
+      dispatch(aiProfiSetValueToBoard());
+      // dispatch(aiSetValueToBoard());
     }
   }, [isX]);
 
@@ -18,16 +23,18 @@ function App() {
         <h1 className="uppercase text-center text-4xl mb-5 font-medium">
           Tic-Tac-Toe
         </h1>
-        <h2 className="mx-2 my-5 font-medium">
-          Winner - {winner}
-          {isDraw && `it's a draw!`}
-        </h2>
+        <div className="flex justify-between p-2">
+          {winner && <h2 className="px-2 py-1 w-full font-medium text-center">WINNER - {winner}</h2>}
+          {isDraw && <h2 className="px-2 py-1 w-full font-medium text-center">TIE GAME!</h2>}
+          {!winner && !isDraw && (
+            <>
+              <p className={isX ? "activePlayer" : "player"}>YOU</p>
+              <p className={!isX ? "activePlayer" : "player"}>AI</p>
+            </>
+          )}
+        </div>
         <Board board={board} />
-        <div className="flex justify-between ">
-          <div className="flex flex-col h-[70px] justify-between mt-3">
-            <p className={isX ? "activePlayer" : "px-2 py-1"}>Player - YOU</p>
-            <p className={!isX ? "activePlayer" : "px-2 py-1"}>Player - AI</p>
-          </div>
+        <div className="flex justify-center ">
           <div>
             <button
               className="reset-btn"
