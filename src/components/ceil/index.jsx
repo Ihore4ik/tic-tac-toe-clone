@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { playerSetValueToBoard } from "../../store/features/boardSlice";
 
 function Ceil({ value, index }) {
@@ -8,10 +8,7 @@ function Ceil({ value, index }) {
   };
 
   return (
-    <div
-      className="ceil"
-      onClick={handleClick}
-    >
+    <div className="ceil" onClick={handleClick}>
       {value === "X" ? (
         <img src="/src/assets/img/cross.png" className="w-[80%]" alt="cross" />
       ) : value === "O" ? (

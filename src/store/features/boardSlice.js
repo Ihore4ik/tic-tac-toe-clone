@@ -14,6 +14,7 @@ const initialState = {
   winner: null,
   playerX: "X",
   playerO: "O",
+  strike: null,
 };
 
 export const aiSetValueToBoard = createAsyncThunk(
@@ -33,7 +34,7 @@ export const boardSlice = createSlice({
   initialState,
   reducers: {
     playerSetValueToBoard: (state, action) => {
-      if (state.board[action.payload] !== null) return;
+      if (state.board[action.payload] !== null || state.winner) return;
       if (state.isX) {
         const newState = state.board.map((el, index) => {
           if (index === action.payload) {
@@ -52,6 +53,7 @@ export const boardSlice = createSlice({
       state.isX = true;
       state.isDraw = false;
       state.winner = null;
+      state.strike = null;
     },
     checkIsDraw: (state) => {
       if (state.winner === null && !state.board.includes(null)) {
@@ -60,8 +62,9 @@ export const boardSlice = createSlice({
     },
     checkWinner: (state) => {
       const winner = checForkWinner(state.board);
-      if (winner !== null) {
-        state.winner = winner === "X" ? "YOU" : "AI";
+      if (winner && winner.winner !== null) {
+        state.winner = winner.winner === "X" ? "PLAYER" : "AI";
+        state.strike = winner.strike;
       }
     },
   },

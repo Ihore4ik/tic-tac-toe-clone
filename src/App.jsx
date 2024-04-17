@@ -12,8 +12,8 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     if (!isX) {
-      dispatch(aiProfiSetValueToBoard());
-      // dispatch(aiSetValueToBoard());
+      // dispatch(aiProfiSetValueToBoard());
+      dispatch(aiSetValueToBoard());
     }
   }, [isX]);
 
@@ -28,21 +28,19 @@ function App() {
           {isDraw && <h2 className="px-2 py-1 w-full font-medium text-center">TIE GAME!</h2>}
           {!winner && !isDraw && (
             <>
-              <p className={isX ? "activePlayer" : "player"}>YOU</p>
+              <p className={isX ? "activePlayer" : "player"}>PLAYER</p>
               <p className={!isX ? "activePlayer" : "player"}>AI</p>
             </>
           )}
         </div>
         <Board board={board} />
-        <div className="flex justify-center ">
-          <div>
+        <div className="flex justify-center my-4">
             <button
               className="reset-btn"
               onClick={() => dispatch(resetBoard())}
             >
               Reset
             </button>
-          </div>
         </div>
       </div>
     </div>

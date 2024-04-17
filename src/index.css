@@ -12,26 +12,58 @@
   @apply flex items-center w-screen h-screen justify-center flex-col bg-gradient-to-r from-[#051937] via-[#008793]  to-[#a8eb12] text-white;
 }
 
-.ceil{
+.ceil {
   @apply shadow-md shadow-black rounded w-[100px] m-2 h-[100px] bg-white flex items-center justify-center cursor-pointer hover:scale-105;
 }
 
+.ceilActive {
+  @apply shadow-md shadow-black rounded w-[100px] m-2 h-[100px] bg-red-500 flex items-center justify-center cursor-pointer hover:scale-105;
+}
+
 .activePlayer {
-  @apply shadow-md shadow-black border-fuchsia-600 border-2 rounded-md px-2 py-1;
+  @apply shadow-md shadow-black border-fuchsia-600 border-2 rounded-md px-2 py-1 w-20 text-center;
 }
 
 .player {
-  @apply shadow-md shadow-black border-transparent rounded-md border-2 px-2 py-1;
+  @apply shadow-md shadow-black border-transparent rounded-md border-2 px-2 py-1 w-20 text-center;
 }
 
 .board {
-  @apply flex flex-wrap w-[350px] h-[350px];
-}
-
-.is-disabled {
-  @apply pointer-events-none  opacity-75;
+  @apply flex flex-wrap w-[350px] h-[350px] relative;
 }
 
 .reset-btn {
   @apply shadow-md shadow-black py-2 px-4 font-medium bg-fuchsia-600 hover:bg-white hover:text-fuchsia-600 transition-all ease-linear delay-200 rounded-lg uppercase;
+}
+
+.row-1 {
+  @apply bg-red-700 rounded absolute w-full h-3 top-[15%] z-10 shadow-md shadow-black;
+}
+
+.row-2 {
+  @apply bg-red-700 rounded absolute w-full h-3 top-[48%] z-10 shadow-md shadow-black;
+}
+
+.row-3 {
+  @apply bg-red-700 rounded absolute w-full h-3 top-[81%] z-10 shadow-md shadow-black;
+}
+
+.col-1 {
+  @apply bg-red-700 rounded absolute h-full w-3 left-[15%] z-10 shadow-md shadow-black;
+}
+
+.col-2 {
+  @apply bg-red-700 rounded absolute h-full w-3 left-[48%] z-10 shadow-md shadow-black;
+}
+
+.col-3 {
+  @apply bg-red-700 rounded absolute h-full w-3 left-[81%] z-10 shadow-md shadow-black;
+}
+
+.d-1 {
+  @apply bg-red-700 skew-y-[45deg] rounded absolute w-[90%] h-3 left-[5%] top-[50%] z-10 shadow-md shadow-black;
+}
+
+.d-2 {
+  @apply bg-red-700 skew-y-[-45deg] rounded absolute w-[90%] h-3 left-[5%] top-[50%] z-10 shadow-md shadow-black;
 }

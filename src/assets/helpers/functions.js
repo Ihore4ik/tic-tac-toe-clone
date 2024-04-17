@@ -1,16 +1,19 @@
 export const winnerPositions = [
   // horizontal
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
+  { line: [0, 1, 2], winClass: "row-1" },
+  { line: [3, 4, 5], winClass: "row-2" },
+  { line: [6, 7, 8], winClass: "row-3" },
+
   //   vertical
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
+  { line: [0, 3, 6], winClass: "col-1" },
+  { line: [1, 4, 7], winClass: "col-2" },
+  { line: [2, 5, 8], winClass: "col-3" },
+
   //   diagonal
-  [0, 4, 8],
-  [2, 4, 6],
+  { line: [0, 4, 8], winClass: "d-1" },
+  { line: [2, 4, 6], winClass: "d-2" },
 ];
+
 export const getRandomNumber = (num) => {
   return Math.floor(Math.random() * num) + 1;
 };
@@ -28,9 +31,15 @@ export const findAvailableCeils = (arr) => {
   }, []);
 };
 export const checForkWinner = (board) => {
-  for (let [a, b, c] of winnerPositions) {
+  for (let winnerPosition of winnerPositions) {
+    const {line: [a,b,c], winClass} = winnerPosition;
+  // for (let [a, b, c] of winnerPositions) {
     if (board[a] && board[a] === board[b] && board[b] === board[c]) {
-      return board[a] === "X" ? "X" : "O";
+      return {
+        winner: board[a] === "X" ? "X" : "O",
+        strike: winClass
+      };
+      // return board[a] === "X" ? "X" : "O";
     }
   }
   return null;
@@ -38,9 +47,12 @@ export const checForkWinner = (board) => {
 export const minimax = (newBoard, setValue) => {
   const availCeils = findAvailableCeils(newBoard);
 
-  if (checForkWinner(newBoard) === "X") {
+  if (checForkWinner(newBoard) && checForkWinner(newBoard).winner === "X") {
     return { score: -10 };
-  } else if (checForkWinner(newBoard) === "O") {
+  } else if (
+    checForkWinner(newBoard) &&
+    checForkWinner(newBoard).winner === "O"
+  ) {
     return { score: 10 };
   } else if (availCeils.length === 0) {
     return { score: 0 };
