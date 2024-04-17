@@ -5,6 +5,7 @@
 ## :rocket: Knowledges
  - `ReactJS`
  - `Redux Toolkit`
+ - `Tailwind CSS`
 
 ## :book: How to use
 
