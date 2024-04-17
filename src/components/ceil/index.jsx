@@ -1,5 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { playerSetValueToBoard } from "../../store/features/boardSlice";
+import circle from "/src/assets/img/circle.png";
+import cross from "/src/assets/img/cross.png";
 
 function Ceil({ value, index }) {
   const dispatch = useDispatch();
@@ -10,10 +12,10 @@ function Ceil({ value, index }) {
   return (
     <div className="ceil" onClick={handleClick}>
       {value === "X" ? (
-        <img src="/src/assets/img/cross.png" className="w-[80%]" alt="cross" />
+        <img src={cross} className="w-[80%]" alt="cross" />
       ) : value === "O" ? (
         <img
-          src="/src/assets/img/circle.png"
+          src={circle}
           className="w-[80%]"
           alt="circle"
         />
