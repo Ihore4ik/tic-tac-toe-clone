@@ -15,6 +15,7 @@ const initialState = {
   playerX: "X",
   playerO: "O",
   strike: null,
+  mode: "easy"
 };
 
 export const aiSetValueToBoard = createAsyncThunk(
@@ -54,6 +55,10 @@ export const boardSlice = createSlice({
       state.isDraw = false;
       state.winner = null;
       state.strike = null;
+    },
+    setAIMode: (state, action) => {
+      state.mode = action.payload;
+      boardSlice.caseReducers.resetBoard(state);
     },
     checkIsDraw: (state) => {
       if (state.winner === null && !state.board.includes(null)) {
@@ -96,6 +101,6 @@ export const boardSlice = createSlice({
   },
 });
 
-export const { playerSetValueToBoard, resetBoard, checkIsDraw } =
+export const { playerSetValueToBoard, resetBoard, checkIsDraw, setAIMode } =
   boardSlice.actions;
 export default boardSlice.reducer;
